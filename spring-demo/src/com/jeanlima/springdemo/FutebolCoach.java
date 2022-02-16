@@ -15,6 +15,10 @@ public class FutebolCoach implements Coach{
 	//definir campo para dependencia
 	private SorteService sorteService;
 	
+	public FutebolCoach() {
+		
+	}
+	
 	/*
 	 * INJEÇÃO DE CONSTRUTOR
 	 * definir construtor para injeção de dependencia
@@ -32,6 +36,20 @@ public class FutebolCoach implements Coach{
 	public String getSorteDiaria() {
 		
 		return sorteService.getSorte();
+	}
+	
+	/**
+	 * método para iniciar o BEAN
+	 */
+	public void doMyStartupStuff() {
+		System.out.println("FutebolCoach: dentro do metodo para fazer coisas no inicio");
+	}
+	
+	/**
+	 * método para destruir o BEAN
+	 */
+	public void doMyCleanupStuff() {
+		System.out.println("FutebolCoach: dentro do metodo para fazer coisas no fim");
 	}
 
 }
