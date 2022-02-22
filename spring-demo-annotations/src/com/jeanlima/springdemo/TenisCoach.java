@@ -1,8 +1,13 @@
 package com.jeanlima.springdemo;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PostMapping;
 
 //adicionar a anotação para transformar a classe em bean quando o context escaneá-la
 //@Component para escaner e o parametro é o bean ID
@@ -30,6 +35,25 @@ public class TenisCoach implements Coach {
 	
 	public TenisCoach() {
 		System.out.println(">> TenisCoach: dentro do construtor");
+	}
+	
+	//#### PARTE 5 - init e destroy métodos
+	@PostConstruct
+	public void doStartupStaff() {
+		System.out.println(">> TenisCoach: dentro do método startup");
+	}
+	
+	/**
+	 * Here is a subtle point you need to be aware of with "prototype" scoped beans. 
+	 * For "prototype" scoped beans, Spring does not call the @PreDestroy method
+	 * In contrast to the other scopes, Spring does not manage the complete lifecycle of a prototype bean: the container instantiates, configures, and otherwise assembles a prototype object, and hands it to the client, with no further record of that prototype
+instance.  Thus, although initialization lifecycle callback methods are called on all objects regardless of scope, in the case of prototypes, configured destruction lifecycle callbacks are not called. The client code must clean up prototype-scoped objects and release expensive resources that the prototype bean(s) are holding. 
+To get the Spring container to release resources held by prototype-scoped beans, try using a custom bean post-processor, which holds a reference to beans that need to be cleaned up.
+	 */
+	
+	@PreDestroy
+	public void doCleanupStaff() {
+		System.out.println(">> TenisCoach: dentro do método cleanup");
 	}
 	
 	/* ###### PARTE 1
