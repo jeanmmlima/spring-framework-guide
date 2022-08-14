@@ -1,14 +1,14 @@
-package com.luv2code.hibernate.demo;
+package com.jeanlima.hibernatemapping.demos;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.luv2code.hibernate.demo.entity.Course;
-import com.luv2code.hibernate.demo.entity.Instructor;
-import com.luv2code.hibernate.demo.entity.InstructorDetail;
-import com.luv2code.hibernate.demo.entity.Review;
-import com.luv2code.hibernate.demo.entity.Student;
+import com.jeanlima.hibernatemapping.model.Course;
+import com.jeanlima.hibernatemapping.model.Instructor;
+import com.jeanlima.hibernatemapping.model.InstructorDetail;
+import com.jeanlima.hibernatemapping.model.Review;
+import com.jeanlima.hibernatemapping.model.Student;
 
 public class DeletePacmanCourseDemo {
 
