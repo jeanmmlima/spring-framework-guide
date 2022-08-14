@@ -42,10 +42,13 @@ public class InstructorDetail {
 	 * 
 	 * mappedBy: associa a propriedade correspondente na classe Instructor
 	 * 
-	 * Também posso usar a propriedade cascade para replicar as operações associadas a instructorDetail para instructor
+	 * cascade: Também posso usar a propriedade cascade para replicar as 
+	 * operações associadas a instructorDetail para instructor
+	 * cascade também aceita multiplas entradas. No exemplo abaixo nã há a operação de REMOVE
 	 */
 
-	@OneToOne(mappedBy = "instructorDetail",cascade = CascadeType.ALL)
+	//@OneToOne(mappedBy = "instructorDetail",cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "instructorDetail",cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REFRESH})
 	 private Instructor instructor;
 	
 	public InstructorDetail() {
