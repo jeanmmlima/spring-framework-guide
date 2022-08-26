@@ -1,5 +1,7 @@
 package com.jeanlima.springbootexample;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,10 +16,21 @@ import org.springframework.web.context.annotation.RequestScope;
 @RestController
 public class SpringbootexampleApplication {
 
+	/*
+	 * Chamando propriedade 
+	 */
+	@Autowired
+	@Qualifier("applicationName")
+	 private String appName;
 
+	//mapeia a rota
 	@GetMapping("/hello")
 	public String helloWorld(){
-		return "Olá, mundo!";
+		/*
+		 * vai mostrar a msg no browser quando a rota /hello for acessado
+		 */
+		//return "Olá, mundo!";
+		return appName;
 	}
 
 	public static void main(String[] args) {
