@@ -1,10 +1,13 @@
 package com.jeanlima.springdatajpa.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +20,15 @@ public class Cliente {
 
     @Column(length = 100)
     private String nome;
+
+    //um cliente pode ter muitos pedidos
+    /*
+     * mappedBy --> para a partir da classe cliente eu possa mapear/retornar os pedidos
+     * passo como parametro o campo, na tabela de pedidos, que faz referencia a cliente.
+     * no caso é cliente.
+     */
+    @OneToMany(mappedBy = "cliente")
+    private Set<Pedido> pedidos;
 
     
     public Cliente() {
@@ -36,10 +48,19 @@ public class Cliente {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public Set<Pedido> getPedidos() {
+        return pedidos;
+    }
+    public void setPedidos(Set<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+
     @Override
     public String toString() {
         return "Cliente [id=" + id + ", nome=" + nome + "]";
     }
+    
 
     
     
