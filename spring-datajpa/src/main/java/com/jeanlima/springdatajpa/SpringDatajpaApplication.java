@@ -21,30 +21,30 @@ public class SpringDatajpaApplication {
 	public CommandLineRunner init(){
 		return args -> {
 			System.out.println("Salvando clientes");
-            clienteRepository.salvar(new Cliente("José Maria"));
-            clienteRepository.salvar(new Cliente("Maria da Glória"));
+            clienteRepository.save(new Cliente("José Mário"));
+            clienteRepository.save(new Cliente("Ana Maria"));
 
-            List<Cliente> todosClientes = clienteRepository.obterTodos();
+            List<Cliente> todosClientes = clienteRepository.findAll();
             todosClientes.forEach(System.out::println);
 
             System.out.println("Atualizando clientes");
             todosClientes.forEach(c -> {
                 c.setNome(c.getNome() + " atualizado.");
-                clienteRepository.atualizar(c);
+                clienteRepository.save(c);
             });
 
-            todosClientes = clienteRepository.obterTodos();
+            todosClientes = clienteRepository.findAll();
             todosClientes.forEach(System.out::println);
 
             System.out.println("Buscando clientes");
-            clienteRepository.buscarPorNome("J").forEach(System.out::println);
+            clienteRepository.findByNomeLike("J").forEach(System.out::println);
 
             System.out.println("deletando clientes");
-            clienteRepository.obterTodos().forEach(c -> {
-                clienteRepository.deletar(c);
+            clienteRepository.findAll().forEach(c -> {
+                clienteRepository.delete(c);
             });
 
-            todosClientes = clienteRepository.obterTodos();
+            todosClientes = clienteRepository.findAll();
             if(todosClientes.isEmpty()){
                 System.out.println("Nenhum cliente encontrado.");
             }else{
