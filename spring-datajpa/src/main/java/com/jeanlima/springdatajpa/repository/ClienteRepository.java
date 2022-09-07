@@ -13,7 +13,7 @@ import com.jeanlima.springdatajpa.model.Cliente;
 
 @Repository
 public class ClienteRepository {
-
+    //utilizando entity manager!
     @Autowired
     private EntityManager entityManager;
 
