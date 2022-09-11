@@ -41,6 +41,9 @@ public interface ClienteRepository extends JpaRepository<Cliente,Integer>{
     @Modifying //pois não é só consulta - transactional 
     void deletarPorNome(String nome);
 
+    @Query(" select c from Cliente c left join fetch c.pedidos where c.id = :id  ")
+    Cliente findClienteFetchPedidos( @Param("id") Integer id );
+
     
     
 }

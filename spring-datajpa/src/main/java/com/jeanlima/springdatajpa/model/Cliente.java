@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,8 +27,10 @@ public class Cliente {
      * mappedBy --> para a partir da classe cliente eu possa mapear/retornar os pedidos
      * passo como parametro o campo, na tabela de pedidos, que faz referencia a cliente.
      * no caso é cliente.
+     * 
+     * fetch  --> Lazy ou Eager - CUIDADO!!!
      */
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
     private Set<Pedido> pedidos;
 
     
