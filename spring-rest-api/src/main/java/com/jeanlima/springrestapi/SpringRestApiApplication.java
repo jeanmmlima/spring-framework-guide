@@ -19,11 +19,11 @@ import com.jeanlima.springrestapi.repository.PedidoRepository;
 @SpringBootApplication
 public class SpringRestApiApplication {
 
-	@Bean
+	/* @Bean
 	public CommandLineRunner init(@Autowired ClienteRepository clientes, @Autowired PedidoRepository pedidos){
 		
 		return args -> {
-			/* System.out.println("Salvando clientes");
+			 System.out.println("Salvando clientes");
             clienteRepository.save(new Cliente("João Maria"));
             clienteRepository.save(new Cliente("Maria da Glória"));
 
@@ -31,7 +31,7 @@ public class SpringRestApiApplication {
             System.out.println("Existe cliente com o nome José? "+existe);
 
             List<Cliente> result = clienteRepository.encontrarPorNomeMod("Maria");
-            result.forEach( System.out::println); */
+            result.forEach( System.out::println); 
 
 			System.out.println("Salvando clientes");
             Cliente fulano = new Cliente("Fulano");
@@ -44,9 +44,9 @@ public class SpringRestApiApplication {
 
             pedidos.save(p);
 
-           /*  Cliente cliente = clientes.findClienteFetchPedidos(fulano.getId());
+             Cliente cliente = clientes.findClienteFetchPedidos(fulano.getId());
             System.out.println(cliente);
-            System.out.println(cliente.getPedidos()); */
+            System.out.println(cliente.getPedidos()); 
 			
             //pedidos.findByCliente(fulano).forEach(System.out::println);
 
@@ -62,7 +62,7 @@ public class SpringRestApiApplication {
 
             
 		};
-	}
+	} */
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringRestApiApplication.class, args);
