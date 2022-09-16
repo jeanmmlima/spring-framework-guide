@@ -1,4 +1,4 @@
-package io.github.dougllasfps.exception;
+package com.jeanlima.springrestapi.exception;
 
 public class PedidoNaoEncontradoException extends RuntimeException {
 
