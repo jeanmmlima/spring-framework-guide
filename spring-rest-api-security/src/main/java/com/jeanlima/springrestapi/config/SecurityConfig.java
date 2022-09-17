@@ -18,25 +18,7 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder(){
 
-        /*
-        PasswordEncoder passwordEncoder = new PasswordEncoder() {
-             //codiica a senha
-            @Override
-            public String encode(CharSequence rawPassword) {
-                // TODO Auto-generated method stub
-                return rawPassword + "321";
-            }
-
-            //descodifca a senha
-            @Override
-            public boolean matches(CharSequence rawPassword, String encodedPassword) {
-                // TODO Auto-generated method stub
-                return (rawPassword + "321").equals(encodedPassword);
-            } 
-            };*/
             return new BCryptPasswordEncoder();
-
-    
             
     };
 
