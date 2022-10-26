@@ -25,6 +25,12 @@ import org.springframework.web.server.ResponseStatusException;
 import com.jeanlima.springrestapi.model.Cliente;
 import com.jeanlima.springrestapi.repository.ClienteRepository;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 @RequestMapping("/api/clientes")
 @RestController //anotação especializadas de controller - todos já anotados com response body!
 public class ClienteController {
@@ -32,8 +38,14 @@ public class ClienteController {
     @Autowired
     private ClienteRepository clientes;
 
+    @Operation(summary = "Get user", description = "Get user")
+    @SecurityRequirement(name = "Bearer Authentication")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "cliente encontrado!"),
+        @ApiResponse(responseCode = "404", description = "cliente não encontrado!")
+    })
     @GetMapping("{id}")
-    public Cliente getClienteById( @PathVariable Integer id ){
+    public Cliente getClienteById( @PathVariable @Parameter(description = "id do cliente") Integer id ){
         return clientes
                 .findById(id)
                 .orElseThrow(() -> //se nao achar lança o erro!
@@ -47,6 +59,8 @@ public class ClienteController {
         return clientes.save(cliente);
     }
 
+    @Operation(summary = "Delete user", description = "Delete user")
+    @SecurityRequirement(name = "Bearer Authentication")
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete( @PathVariable Integer id ){
