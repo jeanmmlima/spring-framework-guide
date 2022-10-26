@@ -26,6 +26,8 @@ import com.jeanlima.springrestapi.model.Cliente;
 import com.jeanlima.springrestapi.repository.ClienteRepository;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RequestMapping("/api/clientes")
@@ -37,6 +39,10 @@ public class ClienteController {
 
     @Operation(summary = "Get user", description = "Get user")
     @SecurityRequirement(name = "Bearer Authentication")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "cliente encontrado!"),
+        @ApiResponse(responseCode = "404", description = "cliente não encontrado!")
+    })
     @GetMapping("{id}")
     public Cliente getClienteById( @PathVariable Integer id ){
         return clientes
