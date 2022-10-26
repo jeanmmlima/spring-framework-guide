@@ -25,6 +25,9 @@ import org.springframework.web.server.ResponseStatusException;
 import com.jeanlima.springrestapi.model.Cliente;
 import com.jeanlima.springrestapi.repository.ClienteRepository;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 @RequestMapping("/api/clientes")
 @RestController //anotação especializadas de controller - todos já anotados com response body!
 public class ClienteController {
@@ -32,6 +35,8 @@ public class ClienteController {
     @Autowired
     private ClienteRepository clientes;
 
+    @Operation(summary = "Get user", description = "Get user")
+    @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("{id}")
     public Cliente getClienteById( @PathVariable Integer id ){
         return clientes
@@ -47,6 +52,8 @@ public class ClienteController {
         return clientes.save(cliente);
     }
 
+    @Operation(summary = "Delete user", description = "Delete user")
+    @SecurityRequirement(name = "Bearer Authentication")
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete( @PathVariable Integer id ){
