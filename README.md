@@ -26,6 +26,10 @@
 4. Após o precesso, você vera uma pasta _Servers_ na aba _Project Explorer_ do Eclipse.
 
 
+## 3. Build da aplicação (Maven)
 
+1. Na raiz do projeto, executar o seguinte comando
+
+```./mvnw clean package```
 
 
