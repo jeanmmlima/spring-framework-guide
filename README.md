@@ -38,4 +38,18 @@
 
 ``` java -jar nome-do-arquivo-versao-SNAPSHOT.jar ```
 
+- 2.2: Caso seu empacotamento (*packaging*) seja WAR (para rodar em um tomcat externo, por exemeplo):
+
+A. Certifique-se que o starter do tomcat foi definido no arquivo pom
+
+```
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+```
+
+
+
 
