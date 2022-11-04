@@ -32,4 +32,10 @@
 
 ```./mvnw clean package```
 
+2. Acesse o diretório *target*
+
+- 2.1: Caso seu empacotamento (*packaging*) seja JAR, rode o seguinte comando
+
+``` java -jar nome-do-arquivo-versao-SNAPSHOT.jar ```
+
 
