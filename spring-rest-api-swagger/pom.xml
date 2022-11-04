@@ -8,10 +8,29 @@
 		<version>2.7.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+	<profiles>
+		<profile>
+		<activation>
+			<activeByDefault>true</activeByDefault>
+		</activation>
+			<id>dev</id>
+			<properties>
+				<project.packaging>jar</project.packaging>
+				<tomcat.scope>compile</tomcat.scope>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<project.packaging>war</project.packaging>
+				<tomcat.scope>provided</tomcat.scope>
+			</properties>
+		</profile>
+	</profiles>
 	<groupId>com.jeanlima</groupId>
 	<artifactId>spring-rest-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>${project.packaging}</packaging>
 	<name>spring-rest-api</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -41,7 +60,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
+			<scope>${tomcat.scope}</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
